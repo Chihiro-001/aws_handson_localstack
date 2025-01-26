@@ -20,14 +20,14 @@ Publish a message to SNS:
 
 ```sh
 awslocal sns publish \
-  --topic-arn ${SNS_TOPIC_ARN} \
+  --topic-arn arn:aws:sns:ap-northeast-1:000000000000:localstack-handson \
   --message "Hello from SQS to Lambda #1"
 ```
 
 Verify SQS receives the message:
 
 ```sh
-awslocal list-queue
+awslocal sqs list-queues
 
 # Copy SQS QUEUE URL
 
