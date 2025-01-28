@@ -51,4 +51,9 @@ aws iam create-role \
   --assume-role-policy-document file:///usr/local/bin/trust_policy.json \
   --endpoint-url "$LOCALSTACK_URL"
 
+aws iam attach-role-policy \
+  --role-name AWSLambdaSQSQueueExecutionRole \
+  --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaSQSQueueExecutionRole \
+  --endpoint-url "$LOCALSTACK_URL"
+
 echo "Resources setup complete!"
