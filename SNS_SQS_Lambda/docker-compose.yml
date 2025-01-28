@@ -6,7 +6,7 @@ services:
       - "4566:4566" # LocalStack entry point
       - "4510-4559:4510-4559" # Lambda ports
     environment:
-      SERVICES: sqs,sns,lambda,iam
+      SERVICES: sqs,sns,lambda,iam,logs
       LAMBDA_EXECUTOR: docker
       DEBUG: 1
       DATA_DIR: /tmp/localstack/data
@@ -22,7 +22,6 @@ services:
       retries: 3
     volumes:
       - localstack_data:/var/lib/localstack
-      # - "./localstack/src:/etc/localstack/init/ready.d" # Initialization scripts
       - "/var/run/docker.sock:/var/run/docker.sock" # Required for Lambda Docker execution
   
   setup-localstack:
