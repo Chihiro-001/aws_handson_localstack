@@ -51,20 +51,4 @@ aws iam create-role \
   --assume-role-policy-document file:///usr/local/bin/trust_policy.json \
   --endpoint-url "$LOCALSTACK_URL"
 
-# Create Lambda function
-aws lambda create-function \
-  --function-name process-sqs-messages \
-  --runtime python3.12 \
-  --role arn:aws:iam::000000000000:role/AWSLambdaSQSQueueExecutionRole \
-  --handler lambda_function.lambda_handler \
-  --zip-file fileb:///usr/local/bin/function.zip \
-  --endpoint-url "$LOCALSTACK_URL"
-
-# Add SQS as a Lambda trigger
-aws lambda create-event-source-mapping \
-  --function-name process-sqs-messages \
-  --event-source-arn "$QUEUE_ARN" \
-  --region "$AWS_DEFAULT_REGION" \
-  --endpoint-url "$LOCALSTACK_URL"
-
 echo "Resources setup complete!"
