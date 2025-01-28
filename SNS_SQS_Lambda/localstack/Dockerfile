@@ -6,4 +6,5 @@ RUN apt-get update -y \
 netcat-traditional \
 && apt-get clean -y
 
+COPY ./src /usr/local/bin/
 RUN rm -rf /var/lib/apt/lists/*
