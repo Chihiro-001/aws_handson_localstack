@@ -3,10 +3,10 @@ services:
     build: ./localstack
     container_name: localstack
     ports:
-      - "4566:4566" # LocalStack entry point
+      - "4566:4566" # LocalStack end point
       - "4510-4559:4510-4559" # Lambda ports
     environment:
-      SERVICES: sqs,sns,lambda,iam,logs
+      SERVICES: sqs,sns,lambda,iam,logs,s3
       LAMBDA_EXECUTOR: docker
       DEBUG: 1
       DATA_DIR: /tmp/localstack/data
